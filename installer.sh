@@ -1,14 +1,14 @@
 #!/bin/sh
 
 # 
-# SCRIPT : DOWNLOAD AND INSTALL JediMakerXtream #
+# SCRIPT : DOWNLOAD AND INSTALL xcplugin #
 # 
-# Command: wget https://raw.githubusercontent.com/emilnabil/jedimakerxtream/main/installer.sh -O - | /bin/sh #
+# Command: wget https://raw.githubusercontent.com/emilnabil/xcplugin/main/installer.sh -O - | /bin/sh #
 # 
-# Plugin	... jedimaker
-PACKAGE_DIR='JediMakerXtream/main'
-MY_IPK="enigma2-plugin-extensions-jedimakerxtream_6.18_all.ipk"
-MY_DEB="enigma2-plugin-extensions-jedimakerxtream_6.18_all.deb"
+# Plugin	... xcplugin
+PACKAGE_DIR='xcplugin/main'
+MY_IPK="enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.ipk"
+MY_DEB="enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.deb"
 # Auto ... Do not change
 
 # Decide : which package ?
@@ -23,10 +23,10 @@ fi
 MY_TMP_FILE="/tmp/"$MY_FILE
 
 echo ''
-echo 'welcome to jediMakerXtream'
+echo 'welcome to xcplugin'
 echo '**  STARTED  **'                     
 echo "**  Uploaded by: Emil_Nabil  **"                 
-echo "WELCOME TO jediMakerXtream"
+echo "WELCOME TO xcplugin"
 echo ''
 
 # Remove previous file (if any)
