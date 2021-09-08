@@ -4,13 +4,33 @@
 # SCRIPT : DOWNLOAD AND INSTALL xcplugin #
 # 
 # Command: wget https://raw.githubusercontent.com/emilnabil/xcplugin/main/installer.sh -O - | /bin/sh #
-# 
+#  ###########################################
+
+
+###########################################
+'
+####################
+#  Image Checking  #
+if which opkg > /dev/null 2>&1; then
+    STATUS='/var/lib/opkg/status'
+    OSTYPE='Opensource'
+    OPKG='opkg update'
+    OPKGINSTAL='opkg install'
+else
+    STATUS='/var/lib/dpkg/status'
+    OSTYPE='DreamOS'
+    OPKG='apt-get update'
+    OPKGINSTAL='apt-get install'
+    LIBAIO1='libaio1'
+    LIBC6='libc6'
+fi
+
 # Plugin	... xcplugin
 PACKAGE_DIR='xcplugin/main'
 MY_IPK="enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.ipk"
 MY_DEB="enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.deb"
-# Auto ... Do not change
 
+# Auto ... Do not change
 # Decide : which package ?
 MY_MAIN_URL="https://raw.githubusercontent.com/emilnabil/"
 if which dpkg > /dev/null 2>&1; then
