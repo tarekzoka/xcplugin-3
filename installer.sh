@@ -68,7 +68,21 @@ if [ -f $MY_TMP_FILE ]; then
 	if which dpkg > /dev/null 2>&1; then
 		apt-get install --reinstall $MY_TMP_FILE -y
 	else
-		opkg install --force-reinstall $MY_TMP_FILE
+wget $MY_URL/enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all{$.ipk} -qP $TMPDIR
+ opkg install --force-reinstall $TMPDIR/enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all$.ipk
+sleep 1
+set +e
+echo
+wget $MY_URL/enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all{$.deb} -qP $TMPDIR
+ 
+sudo dpkg -i enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.deb $TMPDIR/enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all$.deb
+sleep 1
+set +e
+echo
+
+
+
+ $MY_TMP_FILE
 	fi
 	MY_RESULT=$?
 
