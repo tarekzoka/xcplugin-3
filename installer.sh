@@ -1,116 +1,162 @@
 #!/bin/sh
+# ===========================================
+# SCRIPT : DOWNLOAD AND INSTALL XCPLUGIN
+# ===========================================
+#
+# Command: wget https://raw.githubusercontent.com/emilnabil/xcplugin/main/installer.sh -O - | /bin/sh
+#
+# ===========================================
 
-# 
-# SCRIPT : DOWNLOAD AND INSTALL xcplugin #
-# 
-# Command: wget https://raw.githubusercontent.com/emilnabil/xcplugin/main/installer.sh -O - | /bin/sh #
-#  ###########################################
+# --------------------------------------------------------------------------------------
+# Package Type
+# --------------------------------------------------------------------------------------
+# Mode:
+#	0 = Auto	... IPK or DEB (depending on system)
+#	1 = ipk		... Example : enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.ipk
+#	2 = deb		... Example : enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.deb
+XCPLUGIN_INSTALL_TYPE=0										# File to download/install
 
+# ------------------------------------------------------------------------------------------------------------
+# Server Parameters
+# ------------------------------------------------------------------------------------------------------------
+XCPLUGIN_URL="https://raw.githubusercontent.com/emilnabil/xcplugin/main/"		                                # Custom URL
+VER_FILE_NAME='version'									        # Version File Name on Server
 
-###########################################
-'
-####################
-#  Image Checking  #
-if which opkg > /dev/null 2>&1; then
-    STATUS='/var/lib/opkg/status'
-    OSTYPE='Opensource'
-    OPKG='opkg update'
-    OPKGINSTAL='opkg install'
-else
-    STATUS='/var/lib/dpkg/status'
-    OSTYPE='DreamOS'
-    OPKG='apt-get update'
-    OPKGINSTAL='apt-get install'
-    LIBAIO1='libaio1'
-    LIBC6='libc6'
-fi
-
-# Plugin	... xcplugin
-PACKAGE_DIR='xcplugin/main'
-MY_IPK="enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.ipk"
-MY_DEB="enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.deb"
-
-# Auto ... Do not change
-# Decide : which package ?
-MY_MAIN_URL="https://raw.githubusercontent.com/emilnabil/"
-if which dpkg > /dev/null 2>&1; then
-	MY_FILE=$MY_DEB
-	MY_URL=$MY_MAIN_URL$PACKAGE_DIR'/'$MY_DEB
-else
-	MY_FILE=$MY_IPK
-	MY_URL=$MY_MAIN_URL$PACKAGE_DIR'/'$MY_IPK
-fi
-MY_TMP_FILE="/tmp/"$MY_FILE
-
+# ------------------------------------------------------------------------------------------------------------
+#  Check Version
+# ------------------------------------------------------------------------------------------------------------
 echo ''
-echo 'welcome to xcplugin'
-echo '**  STARTED  **'                     
-echo "**  Uploaded by: Emil_Nabil  **"                 
-echo "WELCOME TO xcplugin"
+echo '***************************************************'
+echo '**              xCPLUGIN Installation              *'
+echo '***************************************************'
 echo ''
+echo 'Checking Server Version ...'
+XCPUGIN_VER_TMP="/tmp/"$VER_FILE_NAME
+rm -f $XCPLUGIN_VER_TMP > /dev/null 2>&1
+wget -q -T 2 $XCPLUGIN_URL$VER_FILE_NAME -P "/tmp/"
 
-# Remove previous file (if any)
-rm -f $MY_TMP_FILE > /dev/null 2>&1
+# ------------------------------------------------------------------------------------------------------------
+# Download/Install
+# ------------------------------------------------------------------------------------------------------------
+if [ -f $XCPLUGIN_VER_TMP ]; then
 
-# Download package file
-echo 'Downloading '$MY_FILE' ...'
-echo $MY_SEP
-echo ''
-wget -T 2 $MY_URL -P "/tmp/"
+	# --------------------------------------------
+	# Get version from "/tmp/version" file
+	# --------------------------------------------
+	XCPLUGIN_VERSION=$(cat $XCPLUGIN_VER_TMP | grep version);
+	XCPLUGIN_VERSION=$(cut -d "=" -f2- <<< "$AJP_VERSION");
 
-# Check download
-if [ -f $MY_TMP_FILE ]; then
-	# Install
-	echo ''
-	echo 'Installation started'
-	echo $MY_SEP
-	echo ''
-	if which dpkg > /dev/null 2>&1; then
-		apt-get install --reinstall $MY_TMP_FILE -y
-	else
-wget $MY_URL/enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all{$.ipk} -qP $TMPDIR
- opkg install --force-reinstall $TMPDIR/enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all$.ipk
-sleep 1
-set +e
-echo
-wget $MY_URL/enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all{$.deb} -qP $TMPDIR
- 
-sudo dpkg -i enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.deb $TMPDIR/enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all$.deb
-sleep 1
-set +e
-echo
+	# Del "/tmp/version"
+	rm -f $XCPLUGIN_VER_TMP > /dev/null 2>&1
 
-
-
- $MY_TMP_FILE
-	fi
-	MY_RESULT=$?
-
-	# Result
-	echo ''
-	echo ''
-	if [ $MY_RESULT -eq 0 ]; then
-		echo "   >>>>   SUCCESSFULLY INSTALLED   <<<<"
+	# Check Version
+	if [ -z "$XCPLUGIN_VERSION" ]; then
 		echo ''
-		echo "   >>>>         RESTARING         <<<<"
-		if which systemctl > /dev/null 2>&1; then
-			sleep 2; systemctl restart enigma2
-		else
-			init 4; sleep 4; init 3;
-		fi
+		echo 'Installation failed (cannot read version from "version" file) !'
 	else
-		echo "   >>>>   INSTALLATION FAILED !   <<<<"
-	fi;
-	echo ''
-	echo '****************************************'
-	echo '**                   FINISHED                   **'
-	echo '****************************************'
-	echo ''
-	exit 0
+		# Version
+		XCPLUGIN_VERSION="v"$XCPLUGIN_VERSION
+
+		# --------------------------------------------
+		# Package File Name
+		# --------------------------------------------
+		XCPLUGIN_IPK="enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.ipk"	# E.g. : enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.ipk
+		XCPLUGIN_DEB="enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.deb"$XCPLUGIN_VERSION"_all.deb"	# E.g. : enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.deb
+		
+		if [ $XCPLUGIN_INSTALL_TYPE = 0 ]; then
+			if which dpkg > /dev/null 2>&1; then
+				XCPLUGIN_FILE=$XCPLUGIN_DEB
+			else
+				AJP_FILE=$XCPLUGIN_IPK
+			fi
+		elif [ $XCPLUGIN_INSTALL_TYPE = 1 ]; then
+			AJP_FILE=$XCPLUGIN_IPK
+		elif [ $XCPLUGIN_INSTALL_TYPE = 2 ]; then
+			XCPLUGIN_FILE=$XCPLUGIN_DEB
+		else
+			XCPLUGIN_FILE="XCPLUGIN_"$XCPLUGIN_VERSION".tar.gz"
+		fi
+
+		# --------------------------------------------
+		# Download ipk file
+		# --------------------------------------------
+		echo "Downloading XCPLUGIN $XCPLUGIN_VERSION ($XCPLUGIN_FILE)..."
+
+		# Remove previous files (if any)
+		rm -f /tmp/*xcplugin*.ipk /tmp/*ajpanel*.deb /tmp/*xcplugin*.tar.gz > /dev/null 2>&1
+
+		# Download
+		wget -q -T 2 $XCPLUGIN_URL$AJP_FILE -P "/tmp/"		# Quiet mode
+		#wget -T 2 $XCPLUGIN_URL$XCPLUGIN_FILE -P "/tmp/"			# Shows download details
+
+		# --------------------------------------------
+		# Install
+		# --------------------------------------------
+		XCPLUGIN_PKG_FILE="/tmp/"$XCPLUGIN_FILE
+		if [ -f $XCPLUGIN_PKG_FILE ]; then
+			# --------------------------------------------
+			# Remove older versions (ajpan/ajpanel)
+			# --------------------------------------------
+			# remove old version
+			if which dpkg > /dev/null 2>&1; then
+				dpkg --purge --force-all enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all > /dev/null 2>&1
+				dpkg --purge --force-all enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all > /dev/null 2>&1
+			else
+				opkg remove --force-remove enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all > /dev/null 2>&1
+				opkg remove --force-remove enigma2-plugin-extensions-xcplugin > /dev/null 2>&1
+			fi
+
+			# Clean up
+			rm -rf '/usr/lib/enigma2/python/Plugins/Extensions/XCPLUGIN'  > /dev/null 2>&1
+			rm -rf './usr/lib/enigma2/python/Plugins/Extensions/XCPLUGIN' > /dev/null 2>&1
+			rm -rf '/usr/lib/enigma2/python/Plugins/Extensions/xcplugin'  > /dev/null 2>&1
+			rm -rf './usr/lib/enigma2/python/Plugins/Extensions/xcplugin' > /dev/null 2>&1
+
+			echo ""
+			echo "***********************************************************************"
+			echo "**                                                                    *"
+			echo "**                       AJPanel    : $XCPLUGIN_VERSION                          *"
+ echo " Uploaded by: Emil_Nabil "
+        	
+			echo "** welcome XCPLUGIN  *"                                                                 
+			echo "***********************************************************************"
+			echo ""
+
+			# ------------------------------------------------------------------------
+			# Install new version (XCPLUGIN)
+			# ------------------------------------------------------------------------
+			if [ $AJP_INSTALL_TYPE = 0 ]; then
+				if which dpkg > /dev/null 2>&1; then
+					apt-get install --reinstall $AJP_PKG_FILE -y			#dpkg -i --force-overwrite $XCPLUGIN_PKG_FILE
+				else
+					opkg install --force-reinstall $XCPLUGIN_PKG_FILE
+				fi
+			elif [ $XCPLUGIN_INSTALL_TYPE = 1 ]; then
+				opkg install --force-reinstall $AJP_PKG_FILE
+			elif [ $AJP_INSTALL_TYPE = 2 ]; then
+				apt-get install --reinstall $AJP_PKG_FILE -y				#dpkg -i --force-overwrite $AJP_PKG_FILE
+			else
+				AJP_FILE="XCPLUGIN_"$XCPLUGIN_VERSION".tar.gz"
+			fi
+
+			# Remove Installation file
+			rm -f /tmp/*XCPLUGIN*.ipk /tmp/*ajpanel*.deb /tmp/*XCPLUGIN*.tar.gz > /dev/null 2>&1
+
+			# Finishing Note
+			echo ""
+			echo '***************************************************'
+			echo '**                    FINISHED                    *'
+			echo '***************************************************'
+			echo ""
+		else
+			echo ''
+			echo "Installation failed (download problem) !"
+		fi
+	fi
 else
 	echo ''
-	echo "Download failed !"
+	echo "Installation failed (cannot get version file from server) !"
 	exit 1
 fi
 
-# --------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------------------
