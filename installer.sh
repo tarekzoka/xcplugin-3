@@ -5,7 +5,7 @@
 # 
 # Command: wget https://raw.githubusercontent.com/emilnabil/xcplugin/main/installer.sh -O - | /bin/sh #
 ######## 
-# Plugin	... xcplugin
+# Plugin	 xcplugin #
 PACKAGE_DIR='xcplugin/main/'
 MY_IPK="enigma2-plugin-extensions-xcplugin-forever_1.6_all.ipk"
 MY_DEB="enigma2-plugin-extensions-xcplugin-forever_1.6_all.deb"
