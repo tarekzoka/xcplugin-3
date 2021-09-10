@@ -7,8 +7,8 @@
 ######## 
 # Plugin	... xcplugin
 PACKAGE_DIR='xcplugin/main/'
-MY_IPK="enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.ipk"
-MY_DEB="enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_all.deb"
+MY_IPK="enigma2-plugin-extensions-xcplugin-forever_1.6_all.ipk"
+MY_DEB="enigma2-plugin-extensions-xcplugin-forever_1.6_all.deb"
 # Auto ... Do not change
 
 # Decide : which package ?
