@@ -21,7 +21,7 @@ sleep 2;
 echo "" 
 echo "" 
 echo "" "*********************************************************" 
-echo "# DY AND INSTALLED SUCCESSFULLY #"
+echo "# DOWNLOAD AND INSTALLED SUCCESSFULLY #"
 echo "          UPLOADED BY EMIL_NABIL "
 echo " "*********************************************************" 
 echo "#.        YOUR DEVICE WELL RESTART Now #" 
@@ -30,6 +30,7 @@ wait 2
 init 4
 init 3
 exit 0
+
 
 
 
