@@ -3,7 +3,6 @@
 #command wget https://raw.githubusercontent.com/emilnabil/xcplugin/main/installer.sh -O - | /bin/sh  
 #
 #
-#
 echo ' download and install plugin XCplugin '
 echo ' ====================================================================='
 wget -O /var/volatile/tmp/XCplugin.tar.gz "https://raw.githubusercontent.com/emilnabil/xcplugin/main/XCplugin.tar.gz"
@@ -25,6 +24,7 @@ init 4;
 sleep 4; 
 init 3;
 exit 0
+
 
 
 
