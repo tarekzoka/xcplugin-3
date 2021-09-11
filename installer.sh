@@ -1,43 +1,24 @@
 #!/bin/sh
 #
-#command: wget https://raw.githubusercontent.com/emilnabil/xcplugin/main/installer.sh -O - | /bin/sh  
+#command wget https://raw.githubusercontent.com/emilnabil/xcplugin/main/installer.sh -O - | /bin/sh
 #
-#
-echo ' download and install plugin XCplugin '
-echo ' ====================================================================='
 wget -O /var/volatile/tmp/xcplugin.tar.gz "https://raw.githubusercontent.com/emilnabil/xcplugin/main/xcplugin.tar.gz"
 wait 
 tar xzvpf /tmp/*.tar.gz  -C /
 wait
 rm -r /var/volatile/tmp/xcplugin.tar.gz                         
-
+                       
 echo "========================================================================"
                 
-	echo ".        WELCOME TO XCPLUGIN "
+	echo ".      WELCOME TO PLUGIN xcplugin "
 	
-echo "#    PLUGIN INSTALLED SUCCESSFULLY           #"
+echo "#    SCRIPT INSTALLED SUCCESSFULLY           #"
 echo "        UPLOADED BY EMIL_NABIL  "     
 echo "#########################################################"
 echo "#########################################################"
-echo "           RESTARING         "
-init 4; 
-sleep 4; 
-init 3;
+wait
+sleep 2
 exit 0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
