@@ -3,7 +3,8 @@
 #command wget https://raw.githubusercontent.com/emilnabil/xcplugin/main/installer.sh -O - | /bin/sh  
 #
 #
-echo ' download and install plugin XCplugin '
+#
+echo ' download and install plugin quarterpouder '
 echo ' ====================================================================='
 wget -O /var/volatile/tmp/XCplugin.tar.gz "https://raw.githubusercontent.com/emilnabil/xcplugin/main/XCplugin.tar.gz"
 wait 
@@ -13,21 +14,15 @@ rm -r /var/volatile/tmp/XCplugin.tar.gz
 
 echo "========================================================================"
                 
-	echo ".        WELCOME TO XCPLUGIN "
+	echo ".        WELCOME TO XCplugin "
 	
 echo "#    PLUGIN INSTALLED SUCCESSFULLY           #"
 echo "        UPLOADED BY EMIL_NABIL  "     
 echo "#########################################################"
 echo "#########################################################"
-echo "           RESTARING         "
-init 4; 
-sleep 4; 
-init 3;
+wait
+sleep 2
 exit 0
-
-
-
-
 
 
 
