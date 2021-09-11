@@ -3,8 +3,7 @@
 #command wget https://raw.githubusercontent.com/emilnabil/xcplugin/main/installer.sh -O - | /bin/sh  
 #
 #
-#
-echo ' download and install plugin quarterpouder '
+echo ' download and install plugin XCplugin '
 echo ' ====================================================================='
 wget -O /var/volatile/tmp/XCplugin.tar.gz "https://raw.githubusercontent.com/emilnabil/xcplugin/main/XCplugin.tar.gz"
 wait 
@@ -23,6 +22,7 @@ echo "#########################################################"
 wait
 sleep 2
 exit 0
+
 
 
 
