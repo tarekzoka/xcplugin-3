@@ -24,12 +24,13 @@ echo "" "*********************************************************"
 echo "# DY AND INSTALLED SUCCESSFULLY #"
 echo "          UPLOADED BY EMIL_NABIL "
 echo " "*********************************************************" 
-echo "#.        PLEASE RESTART NOW #" 
+echo "#.        YOUR DEVICE WELL RESTART Now #" 
 echo "****************************************"
 wait 2
 init 4
 init 3
 exit 0
+
 
 
 
