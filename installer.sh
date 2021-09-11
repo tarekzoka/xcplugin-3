@@ -11,7 +11,7 @@
 ###########################################
 MY_URL="https://raw.githubusercontent.com/emilnabil/xcplugin/main/"  
 
-echo " download and install channel "
+echo " download and install plugin "
 
 wget -O /var/volatile/tmp/xcplugin-1.6.tar.gz "https://raw.githubusercontent.com/emilnabil/xcplugin/main/xcplugin-1.6.tar.gz"
 wait
@@ -30,6 +30,7 @@ wait 2
 init 4
 init 3
 exit 0
+
 
 
 
