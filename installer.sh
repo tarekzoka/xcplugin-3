@@ -13,15 +13,19 @@ rm -r /var/volatile/tmp/XCplugin.tar.gz
 
 echo "========================================================================"
                 
-	echo ".        WELCOME TO XCplugin "
+	echo ".        WELCOME TO XCPLUGIN "
 	
 echo "#    PLUGIN INSTALLED SUCCESSFULLY           #"
 echo "        UPLOADED BY EMIL_NABIL  "     
 echo "#########################################################"
 echo "#########################################################"
-wait
-sleep 2
+echo "           RESTARING         "
+init 4; 
+sleep 4; 
+init 3;
 exit 0
+
+
 
 
 
