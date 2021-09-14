@@ -25,22 +25,19 @@ echo ''
 # Remove previous  any file #
 rm -f $MY_TMP_FILE > /dev/null 2>&1
 echo $MY_EM
+
 echo 'Downloading '$MY_FILE' ...'
-wget -T 2 $MY_URL -P "/tmp/"
+   wget $MY_URL/${PACKAGE}_${VERSION}_all.ipk -qP $TMPDIR
+    $OPKGINSTAL $TMPDIR/${PACKAGE}_${VERSION}_all.ipk
+else
+    echo ".       Please Wait ......"
+    wget $MY_URL/${PACKAGE}_${VERSION}.deb -qP $TMPDIR
+    $DPKINSTALL $TMPDIR/${PACKAGE}_${VERSION}.deb; $OPKGINSTAL -f -y
+fi
 ############################$$$#$
-# Check download
-if [ -f $MY_TMP_FILE ]; then
-	# Install
-	echo 'Install started'
-	echo ''
-	if which dpkg > /dev/null 2>&1; then
-		apt-get install --reinstall $MY_TMP -y
-	else
-		opkg install --force-reinstall $MY_TMP
-	echo ''
+echo " ============================================================================"
 	echo $MY_EM
-echo "**  Uploaded by: Emil_Nabil  **"
-	if [ ? -eq 0 ]; then
+echo ""
 		echo "     SUCCESSFULLY INSTALLED   "
   echo $MY_EM
 		echo ''
@@ -51,6 +48,7 @@ init 3;
 	exit 0
 ############              
 	
+
 
 
 
