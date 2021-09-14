@@ -33,7 +33,7 @@ else
     wget $MY_URL${PACKAGE}_${VERSION}all.deb -qP $MY_TMP
     dpkg install $MY_TMP/${PACKAGE}_${VERSION}all.deb; opkg install -f -y
 fi
-############################$$$#$
+############################
 echo " ============================================================================"
 	echo $MY_EM
 echo ""
@@ -47,6 +47,7 @@ init 3;
 	exit 0
 ############              
 	
+
 
 
 
