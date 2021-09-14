@@ -26,13 +26,13 @@ echo $MY_EM
 
 echo 'Downloading '$MY_FILE' ...'
 
-   wget $MY_URL${PACKAGE}_${VERSION}_all.ipk -qP $MY_TMP
-    opkg install $MY_TMP/${PACKAGE}_${VERSION}_all.ipk
-else
     echo ".       Please Wait ......"
     wget $MY_URL${PACKAGE}_${VERSION}all.deb -qP $MY_TMP
-    dpkg install $MY_TMP/${PACKAGE}_${VERSION}all.deb; opkg install -f -y
-fi
+    dpkg install $MY_TMP/${PACKAGE}_${VERSION}all.deb
+echo ""
+wget $MY_URL${PACKAGE}_${VERSION}_all.ipk -qP $MY_TMP
+    opkg install $MY_TMP/${PACKAGE}_${VERSION}_all.ipk
+
 ############################
 echo " ============================================================================"
 	echo $MY_EM
@@ -47,6 +47,7 @@ init 3;
 	exit 0
 ############              
 	
+
 
 
 
