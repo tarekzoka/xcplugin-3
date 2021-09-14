@@ -15,8 +15,6 @@ MY_URL="https://raw.githubusercontent.com/emilnabil/xcplugin/main/$PACKAGE_DIR_$
 
 MY_EM="***************************************************************************"
 ################################################################
-# Decide : which package ?
-if which dpkg > /dev/null 2>&1; then
 	echo $MY_EM
 echo ''
 echo '**  STARTED  **'                                      
@@ -27,12 +25,13 @@ rm -f $MY_TMP > /dev/null 2>&1
 echo $MY_EM
 
 echo 'Downloading '$MY_FILE' ...'
-   wget $MY_URL${PACKAGE}_${VERSION}_all.ipk -qP $TMPDIR
-    opkg install $TMPDIR/${PACKAGE}_${VERSION}_all.ipk
+
+   wget $MY_URL${PACKAGE}_${VERSION}_all.ipk -qP $MY_TMP
+    opkg install $MY_TMP/${PACKAGE}_${VERSION}_all.ipk
 else
     echo ".       Please Wait ......"
-    wget $MY_URL${PACKAGE}_${VERSION}all.deb -qP $TMPDIR
-    dpkg install $TMPDIR/${PACKAGE}_${VERSION}all.deb; opkg install -f -y
+    wget $MY_URL${PACKAGE}_${VERSION}all.deb -qP $MY_TMP
+    dpkg install $MY_TMP/${PACKAGE}_${VERSION}all.deb; opkg install -f -y
 fi
 ############################$$$#$
 echo " ============================================================================"
@@ -48,6 +47,7 @@ init 3;
 	exit 0
 ############              
 	
+
 
 
 
