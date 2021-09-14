@@ -1,12 +1,12 @@
 #!/bin/sh
 #
-# SCRIPT : DOWNLOAD AND INSTALL xcplugin
+# SCRIPT : DOWNLOAD AND INSTALL XCPLUGIN
 #
 ###########################################
 #command: wget https://raw.githubusercontent.com/emilnabil/xcplugin/main/installer.sh -O - | /bin/sh
  #
 MY_EM="*********************************************************************************"
-wget -O /var/volatile/tmp/xcplugin-1.6.tar.gz "https://raw.githubusercontent.com/emilnabil/xcplugin/main/xcplugin-1.6.tar.gz"
+wget -O /var/volatile/tmp/XCplugin.tar.gz "https://raw.githubusercontent.com/emilnabil/xcplugin/main/XCplugin.tar.gz"
 wait
 echo $MY_EM
 ######      INSTALL PLUGIN Xcplugin ###
@@ -14,7 +14,7 @@ tar xzvpf /tmp/*.tar.gz -C /
 wait
 echo $MY_EM
 #######   REMOVE PACKAGE FROM TMP ###
-rm -r /var/volatile/tmp/xcplugin-1.6.tar.gz 
+rm -r /var/volatile/tmp/XCplugin.tar.gz 
 echo "========================================================================" 	
 echo ". WELCOME TO PLUGIN XCPLUGIN "
 echo $MY_EM
@@ -27,6 +27,7 @@ wait 3;
 init 4
 init 3
 exit 0
+
 
 
 
