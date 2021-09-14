@@ -23,16 +23,16 @@ echo '**  STARTED  **'
 echo ''
 
 # Remove previous  any file #
-rm -f $MY_TMP_FILE > /dev/null 2>&1
+rm -f $MY_TMP > /dev/null 2>&1
 echo $MY_EM
 
 echo 'Downloading '$MY_FILE' ...'
-   wget $MY_URL/${PACKAGE}_${VERSION}_all.ipk -qP $TMPDIR
+   wget $MY_URL${PACKAGE}_${VERSION}_all.ipk -qP $TMPDIR
     $OPKGINSTAL $TMPDIR/${PACKAGE}_${VERSION}_all.ipk
 else
     echo ".       Please Wait ......"
-    wget $MY_URL/${PACKAGE}_${VERSION}.deb -qP $TMPDIR
-    $DPKINSTALL $TMPDIR/${PACKAGE}_${VERSION}.deb; $OPKGINSTAL -f -y
+    wget $MY_URL${PACKAGE}_${VERSION}all.deb -qP $TMPDIR
+    $DPKINSTALL $TMPDIR/${PACKAGE}_${VERSION}all.deb; $OPKGINSTAL -f -y
 fi
 ############################$$$#$
 echo " ============================================================================"
@@ -48,6 +48,7 @@ init 3;
 	exit 0
 ############              
 	
+
 
 
 
