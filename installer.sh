@@ -9,9 +9,9 @@
 MY_TMP="/tmp"
 VERSION="6.7"
 PACKAGE_DIR="enigma2-plugin-extensions-xcplugin-iptv-mod-lululla"
-MY_URL="https://raw.githubusercontent.com/emilnabil/xcplugin/main/$PACKAGE_DIR_${VERSION}.ipk"
-#####################
-MY_URL="https://raw.githubusercontent.com/emilnabil/xcplugin/main/$PACKAGE_DIR_${VERSION}.deb"
+MY_URL="https://raw.githubusercontent.com/emilnabil/xcplugin/main/$PACKAGE_DIR_${VERSION}all.ipk"
+######################
+MY_URL="https://raw.githubusercontent.com/emilnabil/xcplugin/main/$PACKAGE_DIR_${VERSION}all.deb"
 
 MY_EM="***************************************************************************"
 ################################################################
@@ -48,6 +48,7 @@ init 3;
 	exit 0
 ############              
 	
+
 
 
 
