@@ -1,96 +1,78 @@
 #!/bin/sh
+# ###########################################
+# SCRIPT : DOWNLOAD AND INSTALL XcPlugin Forever #
+# ###########################################
+# Command: wget https://raw.githubusercontent.com/emilnabil/xcplugin/main/installer.sh -qO - | /bin/sh
 #
-# SCRIPT : DOWNLOAD AND INSTALL XCPLUGIN
-#
+# ###########################################
 ###########################################
-#command: wget https://raw.githubusercontent.com/emilnabil/xcplugin/main/installer.sh -O - | /bin/sh
- #
-MY_EM="*********************************************************************************"
-wget -O /var/volatile/tmp/XCplugin.tar.gz "https://raw.githubusercontent.com/emilnabil/xcplugin/main/XCplugin.tar.gz"
-wait
-echo $MY_EM
-######      INSTALL PLUGIN Xcplugin ###
-tar xzvpf /tmp/*.tar.gz -C /
-wait
-echo $MY_EM
-#######   REMOVE PACKAGE FROM TMP ###
-rm -r /var/volatile/tmp/XCplugin.tar.gz 
-echo "========================================================================" 	
-echo ". WELCOME TO PLUGIN XCPLUGIN "
-echo $MY_EM
-	echo " PLUGIN INSTALLED SUCCESSFULLY "
-echo " UPLOADED BY EMIL_NABIL " 
-echo "======================================================"
-echo "       YOUR DEVICE WELL RESTART Now " 
-echo "****************************************"
-wait 3;
-init 4
-init 3
+# Configure where we can find things here #
+TMPDIR='/tmp'
+VERSION='6.7'
+PACKAGE='enigma2-plugin-extensions-xcplugin-iptv-mod-lululla'
+MY_URL='https://raw.githubusercontent.com/emilnabil/xcplugin/main'
+
+####################
+#  Image Checking  #
+
+if [ -f /etc/opkg/opkg.conf ] ; then
+    STATUS='/var/lib/opkg/status'
+    OSTYPE='Opensource'
+    OPKGINSTAL='opkg install'
+    OPKGREMOV='opkg remove --force-depends'
+elif [ -f /etc/apt/apt.conf ] ; then
+    STATUS='/var/lib/dpkg/status'
+    OSTYPE='DreamOS'
+    OPKGINSTAL='apt-get install'
+    OPKGREMOV='apt-get purge --auto-remove'
+    DPKINSTALL='dpkg -i --force-overwrite'
+fi
+
+##################################
+# Remove previous files (if any) #
+rm -rf $TMPDIR/"${PACKAGE:?}"* > /dev/null 2>&1
+
+######################
+#  Remove Old Plugin #
+if grep -qs "Package: $PACKAGE" $STATUS ; then
+    echo "   >>>>   Remove old version   <<<<"
+    $OPKGREMOV $PACKAGE
+    sleep 1; clear
+else
+    echo "   >>>>   No Older Version Was Found   <<<<"
+    sleep 1; clear
+fi
+
+###################
+#  Install Plugin #
+if [ $OSTYPE = "Opensource" ]; then
+    echo "Insallling XcPlugin Forever plugin Please Wait ......"
+    wget $MY_URL/${PACKAGE}_${VERSION}_all.ipk -qP $TMPDIR
+    $OPKGINSTAL $TMPDIR/${PACKAGE}_${VERSION}_all.ipk
+else
+    echo "Insallling XcPlugin Forever plugin Please Wait ......"
+    wget $MY_URL/${PACKAGE}_${VERSION}_all.deb -qP $TMPDIR
+    $DPKINSTALL $TMPDIR/${PACKAGE}_${VERSION}_all.deb; $OPKGINSTAL -f -y
+fi
+
+#########################
+# Remove files (if any) #
+rm -rf $TMPDIR/"${PACKAGE:?}"*
+
+sleep 1; clear
+echo ""
+echo "****************************************************************************************"
+echo "**                                                                                     *"
+echo "**                            XcPlugin   : $VERSION                                         *"
+echo "**                            Develop by : Lululla                                     *"
+echo "**                                                                                     *"
+echo "****************************************************************************************"
+echo ""
+
+if [ $OSTYPE = "Opensource" ]; then
+    killall -9 enigma2
+else
+    systemctl restart enigma2
+fi
+
 exit 0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
