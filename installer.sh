@@ -28,7 +28,7 @@ echo ''
 echo 'welcome to xcplugin'
 echo '**  STARTED  **'                     
 #            # Uploaded Script By  Biko_73                
-# AND MODIFY Script To Work Emu cccam BY    
+# AND MODIFY Script To plugin Xcplugin BY    
                        # EMIL_NABIL  #               
 echo "WELCOME TO xcplugin"
 echo ''
@@ -61,7 +61,7 @@ if [ -f $MY_TMP_FILE ]; then
 	echo ''
 	if [ $MY_RESULT -eq 0 ]; then
 		echo "   >>>>   SUCCESSFULLY INSTALLED   <<<<"
-  echo " **     uploaded by EMIL_NABIL *"
+
 		echo ''
 		echo "   >>>>         RESTARING         <<<<"
 		if which systemctl > /dev/null 2>&1; then
