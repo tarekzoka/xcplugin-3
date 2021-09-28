@@ -28,7 +28,7 @@ echo ''
 echo 'welcome to xcplugin'
 echo '**  STARTED  **'                     
 #            # Uploaded Script By  Biko_73                
-# AND MODIFY Script To plugin Xcplugin BY    
+# AND MODIFY Script To Download Plugin Xcplugin BY    
                        # EMIL_NABIL  #               
 echo "WELCOME TO xcplugin"
 echo ''
