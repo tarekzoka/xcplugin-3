@@ -13,7 +13,7 @@ MY_URL='https://raw.githubusercontent.com/emilnabil/xcplugin/main'
 MY_IPK=enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_6.7_all.ipk
 MY_DEB=enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_6.7_all.deb
 ####################
-MY_EM="============================================================================================================"
+MY_EM='============================================================================================================'
 #  Remove Old Plugin  #
 echo "   >>>>   Remove old version   "
 
@@ -48,20 +48,21 @@ rm -f /tmp/$MY_DEB
 	if [ $? -eq 0 ]; then
 echo ">>>>  SUCCESSFULLY INSTALLED <<<<"
 fi
-echo "********************************************************************************"
+		echo "********************************************************************************"
 echo "   UPLOADED BY  >>>>   EMIL_NABIL " 
 sleep 4;
-echo "       Develop by : Lululla        "                            
-
-#########################
+echo "  Develop by : Lululla "                            
 echo $MY_EM
-                                                                                                                                                
-echo "# your Device will RESTART Now #" 
+###################                                                                                                                  
+echo " your Device will RESTART Now " 
 echo "**********************************************************************************"
 wait 2;
 init 4
 init 3
 exit 0
+
+
+
 
 
 
