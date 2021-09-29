@@ -56,7 +56,7 @@ echo $MY_EM
 ###################                                                                                                                  
 echo " your Device will RESTART Now " 
 echo "**********************************************************************************"
-wait 2;
+wait
 init 4
 init 3
 exit 0
