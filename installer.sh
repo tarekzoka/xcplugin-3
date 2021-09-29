@@ -56,13 +56,14 @@ echo "       Develop by : Lululla        "
 #########################
 echo $MY_EM
                                                                                                                                                 
-if [ $OSTYPE = "Opensource" ]; then
-    killall -9 enigma2
-else
-    systemctl restart enigma2
-fi
-
+echo "# your Device will RESTART Now #" echo "****************************************"
+wait 2
+init 4
+init 3
 exit 0
+
+
+
 
 
 
