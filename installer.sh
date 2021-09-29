@@ -48,7 +48,7 @@ rm -f /tmp/$MY_DEB
 	if [ $? -eq 0 ]; then
 echo ">>>>  SUCCESSFULLY INSTALLED <<<<"
 fi
-		echo "********************************************************************************"
+echo "********************************************************************************"
 echo "   UPLOADED BY  >>>>   EMIL_NABIL " 
 sleep 4;
 echo "       Develop by : Lululla        "                            
@@ -56,8 +56,9 @@ echo "       Develop by : Lululla        "
 #########################
 echo $MY_EM
                                                                                                                                                 
-echo "# your Device will RESTART Now #" echo "****************************************"
-wait 2
+echo "# your Device will RESTART Now #" 
+echo "**********************************************************************************"
+wait 2;
 init 4
 init 3
 exit 0
