@@ -35,7 +35,7 @@ set -e
      wget "$MY_URL/$MY_DEB"
 
 if which dpkg > /dev/null 2>&1; then
-		apt-get install --reinstall $MY_DEB -y
+		dpkg -i --force-overwrite $MY_DEB; apt-get install -f -y
 	else
 		opkg install --force-reinstall $MY_IPK
 	fi
@@ -52,7 +52,7 @@ fi
 echo "   UPLOADED BY  >>>>   EMIL_NABIL " 
 sleep 4;
 echo "  Develop by : Lululla "                            
-echo $MY_EM
+echo "$MY_EM"
 ###################                                                                                                                  
 echo " your Device will RESTART Now " 
 echo "**********************************************************************************"
@@ -60,6 +60,8 @@ wait
 init 4
 init 3
 exit 0
+
+
 
 
 
