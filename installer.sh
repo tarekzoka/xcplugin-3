@@ -10,8 +10,8 @@ echo "**************************************************************************
 TMPDIR='/tmp'
 VERSION='6.7'
 MY_URL='https://raw.githubusercontent.com/emilnabil/xcplugin/main'
-MY_IPK=enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_6.7_all.ipk
-MY_DEB=enigma2-plugin-extensions-xcplugin-iptv-mod-lululla_6.7_all.deb
+MY_IPK=enigma2-plugin-extensions-xcplugin-forever_1.8_all.ipk
+MY_DEB=enigma2-plugin-extensions-xcplugin-forever_1.8_all.deb
 ####################
 MY_EM='============================================================================================================'
 #  Remove Old Plugin  #
@@ -60,6 +60,8 @@ wait
 init 4
 init 3
 exit 0
+
+
 
 
 
