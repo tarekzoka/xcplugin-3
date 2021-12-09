@@ -3,7 +3,7 @@
 # SCRIPT : DOWNLOAD AND INSTALL xcplugin-3
 # ###########################################
 #
-# Command: wget https://raw.githubusercontent.com/tarekzoka/xcplugin-3/installer.sh -qO - | /bin/sh
+# Command: wget https://raw.githubusercontent.com/tarekzoka/xcplugin-3/main/installer.sh -qO - | /bin/sh
 #
 # ###########################################
 
